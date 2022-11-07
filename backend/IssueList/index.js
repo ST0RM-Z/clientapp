@@ -1,37 +1,38 @@
 const express = require("express")
 require('./models/db');
 const Issue = require('./models/issues')
+const fs = require('fs');
 /***This GraphQL Code */
 const { ApolloServer } = require('apollo-server-express');
 // {Id: 1, Status: "Assigned", Owner: "Person-A", Effort: 10, Created: new Date("2022-09-18"), Due: new Date("2022-09-25"), Title: "This is First Issue"}, 
-const typeDefs = `
-    input inputIssue {
-        Status: String
-        Owner: String
-        Effort: Int
-        Title: String
-    }
+// const typeDefs = `
+//     input inputIssue {
+//         Status: String
+//         Owner: String
+//         Effort: Int
+//         Title: String
+//     }
 
-    type issue {
-        Id: String!
-        Status: String!
-        Owner: String
-        Effort: Int
-        Created: String
-        Due: String
-        Title: String
-    }
+//     type issue {
+//         Id: String!
+//         Status: String!
+//         Owner: String
+//         Effort: Int
+//         Created: String
+//         Due: String
+//         Title: String
+//     }
     
-    type Query {
-        about: String!
-        issueList: [issue]
-    }
-    type Mutation {
-        setAboutMessage(message: String!): String
-        addSingleIssue(singleIssue: inputIssue): issue
+//     type Query {
+//         about: String!
+//         issueList: [issue]
+//     }
+//     type Mutation {
+//         setAboutMessage(message: String!): String
+//         addSingleIssue(singleIssue: inputIssue): issue
         
-    }
-`;
+//     }
+// `;
 //addSingleIssue(Status: String, Owner: String, Effort: Int, Title: String): issue
 let aboutMessage = "Hello I am just a variable";
 const tempIssues = [
@@ -96,7 +97,7 @@ function setAboutMessage(_, { message }) {
 }
 
 const server = new ApolloServer({
-    typeDefs,
+    typeDefs : fs.readFileSync('issueList.graphql').toString(),
     resolvers,
 });
 

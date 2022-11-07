@@ -1,0 +1,28 @@
+const typeDefs = `
+    input inputIssue {
+        Status: String
+        Owner: String
+        Effort: Int
+        Title: String
+    }
+
+    type issue {
+        Id: String!
+        Status: String!
+        Owner: String
+        Effort: Int
+        Created: String
+        Due: String
+        Title: String
+    }
+    
+    type Query {
+        about: String!
+        issueList: [issue]
+    }
+    type Mutation {
+        setAboutMessage(message: String!): String
+        addSingleIssue(singleIssue: inputIssue): issue
+        
+    }
+`;
