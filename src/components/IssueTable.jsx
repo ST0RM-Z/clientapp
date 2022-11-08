@@ -19,6 +19,7 @@ const IssueTable = ({issues}) => {
                         <th>CREATED</th>
                         <th>DUE</th>
                         <th>TITLE</th>
+                        <th>EDIT</th>
                     </tr>
                 </thead>
                 <tbody>

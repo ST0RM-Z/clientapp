@@ -8,6 +8,7 @@ const IssueRow = (props) => {
             <td>{new Date(parseInt(props.Created)).toLocaleDateString()}</td>
             <td>{new Date(parseInt(props.Due)).toLocaleDateString()}</td>
             <td>{props.Title}</td>
+            <td>{props.Title}</td>
         </tr>
     )
 } 
