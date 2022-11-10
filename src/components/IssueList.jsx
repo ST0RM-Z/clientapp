@@ -12,6 +12,7 @@ const IssueList = () => {
     const query = `
         query {
             issueList {
+            _id
             Id
             Status
             Owner
@@ -31,6 +32,7 @@ const IssueList = () => {
                 body: JSON.stringify({ query })
                 }).then(async function(response){
                     let issueData = await response.json();
+                    console.log(issueData);
                     setIssues(issueData.data.issueList);
                 })
  
@@ -50,7 +52,8 @@ const IssueList = () => {
         const query = `
         mutation addSingleIssue {
             addSingleIssue(singleIssue: { Owner: "${singleIssue.Owner}", Effort: ${singleIssue.Effort}, Title: "${singleIssue.Title}"}) {
-              Id
+              _id
+                Id
               Status
               Owner
               Effort

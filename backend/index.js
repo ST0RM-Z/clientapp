@@ -19,6 +19,7 @@ const typeDefs = `
     }
 
     type issue {
+        _id:String!
         Id: String!
         Status: StatusType
         Owner: String
@@ -35,6 +36,7 @@ const typeDefs = `
     type Mutation {
         setAboutMessage(message: String!): String
         addSingleIssue(singleIssue: inputIssue): issue
+        SingleIssue(_id:String!):issue
         
     }
 `;
@@ -52,9 +54,14 @@ const resolvers = {
     },
     Mutation: {
         setAboutMessage,
-        addSingleIssue
+        addSingleIssue,
+        SingleIssue
     },
 };
+async function SingleIssue(_,{_id}){
+    console.log(_id);
+    return await Issue.findById(_id);
+}
 async function addSingleIssue(_, {singleIssue}) {
     //console.log("SINGLE",singleIssue.Status);
     const query = Issue.find({});

@@ -4,7 +4,7 @@ const IssueTable = ({issues}) => {
 
 
     const issueRows = issues.map(issue => (
-        <IssueRow key={issue.Id} Id={issue.Id} Status={issue.Status} Owner={issue.Owner} Effort={issue.Effort} Created={issue.Created} Due={issue.Due} Title={issue.Title}/>
+        <IssueRow key={issue.Id} _id={issue._id} Id={issue.Id} Status={issue.Status} Owner={issue.Owner} Effort={issue.Effort} Created={issue.Created} Due={issue.Due} Title={issue.Title}/>
     ))    
     return (
         <div>
